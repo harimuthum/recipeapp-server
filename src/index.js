@@ -19,7 +19,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .catch(() => console.log("Atlas not connected"))
-  .then(() => console.log("Connected to Mongo Atlas"));
+  .then(() => console.log("Connected to Mongo Atlas"))
+  .catch((err) => console.log(err.message));
 
 app.listen(5000, () => console.log("Server is running on port 5000"));
