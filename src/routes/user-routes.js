@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
         username: foundUser.username,
         id: foundUser._id,
       },
-      "jwtKey",
+      process.env.JWT_KEY,
       { expiresIn: "1h" }
     );
 
@@ -83,7 +83,7 @@ export const verifyToken = (req, res, next) => {
   }
 
   try {
-    const decodedToken = jwt.verify(token, "jwtKey");
+    const decodedToken = jwt.verify(token, process.env.JWT_KEY);
     req.user = decodedToken;
     next();
   } catch (error) {
